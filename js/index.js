@@ -73,3 +73,97 @@
     mayChart.resize();
   })
 })();
+// 柱形图-技能掌握
+(function () {
+  var myColor = ['#q089E7', '#F57474', '#56D0E3', '#F8B448', '#8B78F6']
+  // 实例化对象
+  var myChart = echarts.init(document.querySelector('.bar2 .echart'))
+  // 配置信息
+  option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    // legend: {
+    //   data: ['2011年', '2012年']
+    // },
+    grid: {
+      left: '22%',
+      bottom: '10%',
+      top: "10%",
+    },
+    xAxis: {
+      show: false
+    },
+    yAxis: [{
+      type: 'category',
+      data: ['巴西', '印尼', '美国', '印度', '中国'],
+      axisLine: {
+        show: false
+      },
+      // 刻度
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        color: "#fff"
+      }
+    }, {
+      // type: 'category',
+      data: ['702', '350', '610', '350', '701'],
+      axisLine: {
+        show: false
+      },
+      // 刻度
+      axisTick: {
+        show: false
+      },
+      axisLabel: {
+        color: "#fff"
+      }
+    }],
+    series: [{
+        name: '2011年',
+        type: 'bar',
+        data: [70, 34, 60, 78, 69],
+        yAxisIndex: 0,
+        // 柱子为圆角
+        itemStyle: {
+          barBorderRadius: 20,
+          color: function (params) {
+            // params 传进来的是柱子对象
+            // console.log(params)
+            // dataIndex是当前柱子的索引号
+            return myColor[params.dataIndex]
+          }
+        },
+        barWidth: 10,
+        // 柱子之间的距离
+        barCategoryGap: 50,
+        label: {
+          show: true,
+          position: 'inside',
+          formatter: "{c}%"
+        }
+      },
+      {
+        name: '框',
+        type: 'bar',
+        barCategoryGap: 50,
+        barWidth: 10,
+        yAxisIndex: 1,
+        data: [100, 100, 100, 100, 100],
+        itemStyle: {
+          color: "none",
+          borderColor: "#00c1de",
+          borderWidth: 3,
+          barBorderRadius: 15
+        }
+      }
+    ]
+  };
+  myChart.setOption(option);
+
+})();
