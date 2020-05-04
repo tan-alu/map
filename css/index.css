@@ -113,7 +113,6 @@ header .showTime {
 }
 .mainbox .echart {
   height: 3rem;
-  background-color: pink;
 }
 .mainbox .no {
   background-color: rgba(101, 132, 226, 0.1);
@@ -121,7 +120,7 @@ header .showTime {
 }
 .mainbox .no .no-hd {
   position: relative;
-  border: 1px solid #19ba8b;
+  border: 1px solid rgba(154, 226, 205, 0.17);
 }
 .mainbox .no .no-hd::before {
   content: '';
@@ -175,4 +174,66 @@ header .showTime {
   height: 0.5rem;
   line-height: 0.5rem;
   padding-top: 0.125rem;
+}
+.map {
+  height: 10.125rem;
+  position: relative;
+}
+.map .map1 {
+  width: 6.475rem;
+  height: 6.475rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../images/map.png);
+  background-size: 100% 100%;
+  opacity: 0.3;
+}
+.map .map2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.0375rem;
+  height: 8.0375rem;
+  background: url(../images/lbx.png);
+  background-size: 100% 100%;
+  animation: rotate1 15s linear infinite;
+  opacity: 0.6;
+}
+@keyframes rotate1 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.map3 {
+  position: absolute;
+  width: 7.075rem;
+  height: 7.075rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../images/jt.png);
+  background-size: 100% 100%;
+  animation: rotate2 15s linear infinite;
+  opacity: 0.6;
+}
+@keyframes rotate2 {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+.chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10.125rem;
 }
