@@ -21,7 +21,7 @@
     },
     xAxis: [{
       type: 'category',
-      data: ['dia', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      data: ['电商', '教育', '旅游', '医疗', '社交', '金融', '游戏'],
       axisTick: {
         alignWithLabel: true
       },
@@ -41,12 +41,29 @@
         color: 'rgba(255,255,255,.6)',
         fontSize: "12"
       },
+      axisLine: {
+        // show: true
+        lineStyle: {
+          color: "rgba(255,255,255,.1)",
+          width: 2
+        },
+        // 分割线的颜色
+        splitLine: {
+          lineStyle: {
+            color: []
+          }
+        }
+      }
     }],
     series: [{
       name: '直接访问',
       type: 'bar',
       barWidth: '60%',
-      data: [10, 52, 200, 334, 390, 330, 220]
+      data: [10, 52, 200, 334, 390, 330, 220],
+      itemStyle: {
+        // 修改柱子圆角
+        barBorderRadius: 5
+      }
     }]
   };
   // 配置项给实例对象
