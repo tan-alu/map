@@ -68,4 +68,8 @@
   };
   // 配置项给实例对象
   mayChart.setOption(option);
+  // 让图标跟随屏幕自适应
+  window.addEventListener("resize", function () {
+    mayChart.resize();
+  })
 })();
