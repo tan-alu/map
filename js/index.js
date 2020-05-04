@@ -100,6 +100,7 @@
     yAxis: [{
       type: 'category',
       data: ['巴西', '印尼', '美国', '印度', '中国'],
+      inverse: true,
       axisLine: {
         show: false
       },
@@ -113,6 +114,7 @@
     }, {
       // type: 'category',
       data: ['702', '350', '610', '350', '701'],
+      inverse: true,
       axisLine: {
         show: false
       },
@@ -165,5 +167,9 @@
     ]
   };
   myChart.setOption(option);
+  // 让图标跟随屏幕自适应
+  window.addEventListener("resize", function () {
+    mayChart.resize();
+  })
 
 })();
