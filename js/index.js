@@ -169,7 +169,117 @@
   myChart.setOption(option);
   // 让图标跟随屏幕自适应
   window.addEventListener("resize", function () {
-    mayChart.resize();
+    myChart.resize();
   })
 
 })();
+// 折线图
+(function () {
+  // 实例化对象
+  var myChart = echarts.init(document.querySelector('.line .echart'))
+  var yearData = [{
+    year: '2020',
+    data: [
+      [24, 400, 30, 324, 35, 134],
+      [78, 234, 54, 564, 70, 89]
+    ]
+  }, {
+    year: '2021',
+    data: [
+      [253, 40, 40, 324, 35, 134],
+      [98, 244, 24, 154, 70, 90]
+    ]
+  }]
+  // 指定配置
+  option = {
+    color: ['#00f2f1', '#ed3f35'],
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['邮件营销', '联盟广告'],
+      textStyle: {
+        color: "#4c9bfd"
+      },
+      right: "10%"
+    },
+    grid: {
+      left: '3%',
+      top: "20%",
+      right: '4%',
+      bottom: '3%',
+      containLabel: true,
+      show: true,
+      borderColor: '#012f4a', //边框颜色
+
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      axisLabel: {
+        show: true,
+        color: "#fff"
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        show: false
+      }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        show: true,
+        color: "#fff"
+      },
+      axisTick: {
+        show: false
+      },
+      axisLine: {
+        show: false
+      },
+      splitLine: {
+        lineStyle: {
+          color: "#012f4a"
+        }
+      }
+    },
+    series: [{
+        name: '邮件营销',
+        type: 'line',
+        stack: '总量',
+        data: yearData[0].data[0],
+        // 折线变圆滑
+        smooth: true
+      },
+      {
+        name: '联盟广告',
+        type: 'line',
+        stack: '总量',
+        data: yearData[1].data[1],
+        // 折线变圆滑
+        smooth: true
+
+      }
+    ]
+  };
+  myChart.setOption(option)
+  // 让图标跟随屏幕自适应
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+  // 点击切换效果
+  $(".line h2").on("click", "a", function () {
+    // alert(1)
+    // console.log($(this).index())
+    // 点击a之后，根据当前a的索引号，找到对应的相关对象
+    // console.log(yearData[$(this).index()])
+    var obj = yearData[$(this).index()]
+    option.series[0].data = obj.data[0];
+    option.series[1].data = obj.data[1];
+    // 需要重新渲染
+    myChart.setOption(option)
+  });
+})()
