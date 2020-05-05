@@ -282,4 +282,157 @@
     // 需要重新渲染
     myChart.setOption(option)
   });
-})()
+})();
+// 右侧折线图
+(function () {
+  // 初始化
+  var myChart = echarts.init(document.querySelector('.line1 .echart'))
+  // 配置项
+  option = {
+    tooltip: {
+      trigger: 'axis'
+    },
+    legend: {
+      data: ['邮件营销', '联盟广告'],
+      textStyle: {
+        color: '#fff'
+      }
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    grid: {
+      left: '3%',
+      top: "30",
+      right: '10',
+      bottom: '10',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      boundaryGap: false,
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      axisLabel: {
+        textStyle: {
+          color: '#fff',
+          fontSize: 12
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255,255,255,.2)'
+        }
+      }
+    }],
+    yAxis: [{
+      type: 'value',
+      axisLabel: {
+        textStyle: {
+          color: '#fff',
+          fontSize: 12
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255,255,255,.2)'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: 'rgba(255,255,255,.1)'
+        }
+      }
+    }],
+    series: [{
+        name: '邮件营销',
+        type: 'line',
+        areaStyle: {
+          color: new echarts.graphic.
+          LinearGradient(
+            0,
+            0,
+            0,
+            1,
+            [{
+              offset: 0,
+              color: 'rgba(1,132,213,.4)' // 0% 处的颜色
+            }, {
+              offset: 0.8,
+              color: 'rgba(1,132,213,.1)' // 100% 处的颜色
+            }],
+            false // 缺省为 false
+          ),
+          shadowColor: 'rgba(221,220,107,.1)'
+        },
+        // 设置拐点
+        symbol: 'circle',
+        // 拐点大小
+        symbolSize: 8,
+        showSymbol: false,
+        // 拐点边框
+        itemStyle: {
+          color: '#0184d5',
+          borderColor: 'rgba(221,220,107,.1)',
+          borderWidth: 12
+        },
+        data: [120, 132, 101, 134, 90, 230, 210],
+        smooth: true,
+        // 单独修改当前线条的样式
+        lineStyle: {
+          color: '#0184d5',
+          width: 2
+        }
+      },
+      {
+        name: '联盟广告',
+        type: 'line',
+        // 填充区域
+        areaStyle: {
+          color: new echarts.graphic.
+          LinearGradient(
+            0,
+            0,
+            0,
+            1,
+            [{
+              offset: 0,
+              color: 'rgba(0,216,135,.4)' // 0% 处的颜色
+            }, {
+              offset: 0.8,
+              color: 'rgba(0,216,135,.1)' // 100% 处的颜色
+            }],
+            false // 缺省为 false
+          ),
+          shadowColor: 'rgba(0,0,0,.1)'
+        },
+        // 设置拐点
+        symbol: 'circle',
+        // 拐点大小
+        symbolSize: 5,
+        showSymbol: false,
+        // 拐点边框
+        itemStyle: {
+          color: '#00d887',
+          borderColor: 'rgba(221,220,107,.1)',
+          borderWidth: 12
+        },
+        data: [220, 182, 191, 234, 290, 330, 310],
+        smooth: true,
+        // 单独修改当前线条的样式
+        lineStyle: {
+          color: 'green',
+          width: 2
+        }
+      }
+    ]
+  };
+
+  // 配置项给对象
+  myChart.setOption(option)
+  // 让图标跟随屏幕自适应
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})();
