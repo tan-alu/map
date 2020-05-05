@@ -86,9 +86,9 @@
         type: 'shadow'
       }
     },
-    // legend: {
-    //   data: ['2011年', '2012年']
-    // },
+    legend: {
+      data: ['2011年', '2012年']
+    },
     grid: {
       left: '22%',
       bottom: '10%',
@@ -275,7 +275,7 @@
     // alert(1)
     // console.log($(this).index())
     // 点击a之后，根据当前a的索引号，找到对应的相关对象
-    // console.log(yearData[$(this).index()])
+    console.log(yearData[$(this).index()])
     var obj = yearData[$(this).index()]
     option.series[0].data = obj.data[0];
     option.series[1].data = obj.data[1];
@@ -436,3 +436,67 @@
     myChart.resize();
   });
 })();
+// 饼形图1
+(function () {
+  var myChart = echarts.init(document.querySelector('.pie .echart'))
+  option = {
+    color: ['#065aab', '#066eab', '#0682ab', '#0696ab', '#06a0ab'],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    legend: {
+      bottom: '0%',
+      // 修改小图标
+      itemWidth: 10,
+      itemHeight: 10,
+      // data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
+      textStyle: {
+        color: '#fff',
+        fontSize: "12"
+      }
+    },
+    series: [{
+      name: '访问来源',
+      type: 'pie',
+      center: ['50%', '40%'],
+      radius: ['40%', '60%'],
+      avoidLabelOverlap: false,
+      // 图形上的文字
+      label: {
+        show: false,
+        position: 'center'
+      },
+      // 链接文字和图形的线是否显示
+      labelLine: {
+        show: false
+      },
+      data: [{
+          value: 335,
+          name: '直接访问'
+        },
+        {
+          value: 310,
+          name: '邮件营销'
+        },
+        {
+          value: 234,
+          name: '联盟广告'
+        },
+        {
+          value: 135,
+          name: '视频广告'
+        },
+        {
+          value: 548,
+          name: '搜索引擎'
+        }
+      ]
+    }]
+  };
+  myChart.setOption(option)
+  // 让图标跟随屏幕自适应
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})()
