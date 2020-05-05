@@ -499,4 +499,81 @@
   window.addEventListener("resize", function () {
     myChart.resize();
   });
+})();
+// 饼形图2
+(function () {
+  // 初始化
+  var myChart = echarts.init(document.querySelector('.pie1 .echart'))
+  option = {
+    color: ['#006cff', '#60cda0', '#ed8884', '#ff9f7f', '#0096ff', '#9fe6b8', '#32c5e9', '#1d9dff'],
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+      left: 'center',
+      top: 'bottom',
+      bottom: '0%',
+      itemWidth: 10,
+      itemHeight: 10,
+      textStyle: {
+        color: "rgba(255,255,255,.5)",
+        fontSize: '12'
+      }
+    },
+    series: [{
+      name: '地区分布',
+      type: 'pie',
+      radius: [10, 60],
+      center: ['50%', '40%'],
+      roseType: 'radius',
+      // 图形文字标签
+      label: {
+        fontSize: 10
+      },
+      labelLine: {
+        length: 6,
+        length2: 8
+      },
+      data: [{
+          value: 10,
+          name: 'rose1'
+        },
+        {
+          value: 5,
+          name: 'rose2'
+        },
+        {
+          value: 15,
+          name: 'rose3'
+        },
+        {
+          value: 25,
+          name: 'rose4'
+        },
+        {
+          value: 20,
+          name: 'rose5'
+        },
+        {
+          value: 35,
+          name: 'rose6'
+        },
+        {
+          value: 30,
+          name: 'rose7'
+        },
+        {
+          value: 40,
+          name: 'rose8'
+        }
+      ]
+    }]
+  };
+
+  myChart.setOption(option)
+  // 让图标跟随屏幕自适应
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
 })()
